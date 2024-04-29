@@ -15,6 +15,7 @@ import { Route as SignupIndexImport } from './routes/signup/index'
 import { Route as SignoutIndexImport } from './routes/signout/index'
 import { Route as PIndexImport } from './routes/p/index'
 import { Route as LoginIndexImport } from './routes/login/index'
+import { Route as DebugIndexImport } from './routes/debug/index'
 import { Route as PConfigImport } from './routes/p/config'
 import { Route as PUserImport } from './routes/p/$user'
 import { Route as PIdImport } from './routes/p/$id'
@@ -40,6 +41,11 @@ const PIndexRoute = PIndexImport.update({
 
 const LoginIndexRoute = LoginIndexImport.update({
   path: '/login/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DebugIndexRoute = DebugIndexImport.update({
+  path: '/debug/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -92,6 +98,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PConfigImport
       parentRoute: typeof rootRoute
     }
+    '/debug/': {
+      preLoaderRoute: typeof DebugIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/login/': {
       preLoaderRoute: typeof LoginIndexImport
       parentRoute: typeof rootRoute
@@ -119,6 +129,7 @@ export const routeTree = rootRoute.addChildren([
   PIdRoute,
   PUserRoute,
   PConfigRoute,
+  DebugIndexRoute,
   LoginIndexRoute,
   PIndexRoute,
   SignoutIndexRoute,
