@@ -15,7 +15,8 @@
     "bootstrap": "^5.3.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icons-kit": "^2.0.0"
   },
   "devDependencies": {
     "@tanstack/router-vite-plugin": "^1.30.0",
@@ -28,6 +29,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "less": "^4.2.0",
+    "tree-cli": "^0.6.7",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
   }
