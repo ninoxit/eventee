@@ -9,50 +9,102 @@ body, html {
     color: @text-color;
     box-sizing: border-box; 
 }
-
 // Botones
+.btn{
+    font-weight: bold;
+}
 .btn-primary {
     background-color: @color1;
     border-color: @color1;
-    color: @white; 
+    color: @white;
+    &:hover,
+    &:focus {
+        background-color: @color1_hover;
+        border-color: @color1_hover;
+        color: lighten(@color1, 20%);
+    }
 }
 .btn-secondary {
     background-color: @color2;
     border-color: @color2;
-    color: @white; 
+    color: @white;
+    &:hover,
+    &:focus {
+        background-color: @color2_hover;
+        border-color: @color2_hover;
+        color: lighten(@color2, 20%);
+    }
 }
 .btn-success {
-    background-color: @color3;
-    border-color: @color3;
-    color: @white; 
+    background-color: @success;
+    color: @white;
+    &:hover,
+    &:focus {
+        background-color: darken(@success, 10%);
+        color: white;
+    }
 }
 .btn-info {
-    background-color: @color4;
-    border-color: @color4;
-    color: @white; 
+    background-color: @info;
+    border-color: @info;
+    color: @white;
+    &:hover,
+    &:focus {
+        background-color: darken(@info, 10%);
+        border-color: darken(@info, 30%);
+        color: white;
+    }
 }
 .btn-warning {
-    background-color: @color5;
-    border-color: @color5;
-    color: @white; 
+    background-color: @warning;
+    border-color: @warning;
+    color: @white;
+    &:hover,
+    &:focus {
+        background-color: darken(@warning, 10%);
+        border-color: darken(@warning, 30%);
+        color: white;
+    }
 }
 .btn-danger {
     background-color: @red;
     border-color: @red;
-    color: @white; 
+    color: @white;
+    &:hover,
+    &:focus {
+        background-color: darken(@red, 10%);
+        border-color: darken(@red, 10%);
+        color: white;
+    }
 }
 .btn-light {
     background-color: @gray-light;
     border-color: @gray-light;
-    color: @dark; 
+    color: @dark;
+    &:hover,
+    &:focus {
+        background-color: darken(@gray-light, 10%);
+        border-color: darken(@gray-light, 10%);
+        color: white;
+    }
 }
 .btn-dark {
     background-color: @gray-dark;
     border-color: @gray-dark;
     color: @white;
+    &:hover,
+    &:focus {
+        background-color: darken(@gray-dark, 10%);
+        border-color: darken(@gray-dark, 10%);
+        color: white;
+    }
 }
 .btn-link {
     color: @link-color;
+    &:hover,
+    &:focus {
+        color: darken(@link-color, 20%);
+    }
 }
 
 // Enlaces

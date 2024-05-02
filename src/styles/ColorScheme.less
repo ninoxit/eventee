@@ -5,6 +5,13 @@
 @color4: #E2C8BD;
 @color5: #E6DAD0;
 
+// Hover colors
+@color1_hover: darken(@color1, 10%);
+@color2_hover: darken(@color2, 10%);
+@color3_hover: darken(@color3, 10%);
+@color4_hover: darken(@color4, 10%);
+@color5_hover: darken(@color5, 10%);
+
 // Colores de tema Bootstrap
 @body-bg: #FFF;
 @text-color: #333;
@@ -18,11 +25,14 @@
 @link-color: #007BFF;
 @link-hover-color: #0056b3;
 
-@success: #28a745;
-@info: #17a2b8;
-@warning: #ffc107;
-@danger: #dc3545;
-
+@primary: @color1;
+@secondary: @color2;
+@success: #6ED09A; // Verde pastel
+@info: #82CFFD; // Azul pastel
+@warning: #FFDD87; // Amarillo pastel
+@danger: #FF8C94; // Rosa pastel
+@light: #FFFAF0; // Blanco hueso
+@dark: #A9A9A9; // Gris claro
 @white: #FFF;
 @black: #000;
 
@@ -37,11 +47,4 @@
 @teal: #20c997;
 @cyan: #17a2b8;
 
-@primary: @color1;
-@secondary: @color2;
-@success: @color3;
-@info: @color4;
-@warning: @color5;
-@danger: @red;
-@light: @gray-lighter;
-@dark: @gray-dark;
+
