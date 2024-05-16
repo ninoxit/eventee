@@ -1,0 +1,205 @@
+/* Reset */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+html{
+    width: 100vw;
+    height: 100vh;
+}
+/* ESTILOS PARA EL MENU */
+/* Resetear estilos por defecto de la lista */
+ul {
+    list-style-type: none; /* quitamos los puntitos de la lista*/
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo del menú */
+.menu {
+    background-color:#f3d597; /* color de fondo del menú */
+    padding: 10px;
+}
+
+/* Estilo de los elementos de la lista */
+.menu ul {
+    display: flex; /* necesario para el diseño en horizontal */
+}
+
+.menu li {
+    margin-right: 20px; /* espacios entre elementos */
+}
+
+.menu li:last-child {
+    margin-right: 0; /* se le quita el margen al último elemento */
+}
+
+/* Estilo de los enlaces */
+.menu a {
+    color: black; /* letra de la casilla */
+    text-decoration: none; 
+    padding: 20px; /* espacio interno del texto */
+}
+
+/* color de fondo cuando se selecciona una casilla */
+.menu a:hover {
+    background-color: #f87887;
+}
+
+/* formato logo ig */
+.img_insta {
+    width: 40px;
+    height: auto; 
+}
+
+/* formato logo eventee */
+.img_logo {
+    width: 40px;
+    height: auto;
+}
+
+.img_logo2 {
+    width: 250px;
+    height: 250px;
+    align-items: center;
+}
+
+/* Estilo para el contenedor de las imágenes */
+.contenedor-imagenes {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin: auto;
+    padding: 10rem;
+    height: calc(100vh - 100px); /* Ajustamos la altura para centrar verticalmente */
+}
+
+/* Estilo para cada conjunto de imágenes */
+.imagenes {
+    display: flex; 
+    margin-bottom: 40px; 
+    -webkit-filter: brightness(100%);
+
+}
+
+.imagenes .img-link {
+    position: relative; 
+    margin-right: 30px; 
+}
+
+.imagenes .hover-text {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    opacity: 0; ¡
+    transition: opacity 0.3s ease; 
+    color: white;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+.imagenes .img-link:hover .hover-text {
+    opacity: 60; 
+}
+
+.imagenes img {
+    width: 300px; 
+    height: auto; 
+}
+.imagenes img:hover{
+    /* Han */
+    -webkit-filter: brightness(40%);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+/* DISEÑO PARA PIE DE PAGINA */
+.footer {
+    background-color: #fea887;  
+    color: white;  
+    padding: 40px 0;  
+    text-align: center;  
+}
+
+.container {
+    display: flex; 
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+}
+
+.partners,
+.informacion {
+    flex-basis: 45%; 
+}
+
+.partners {
+    order: 1; 
+}
+
+.informacion ul {
+    list-style: none; 
+    padding: 0; 
+}
+
+.informacion li {
+    margin-bottom: 10px; 
+}
+
+.informacion a {
+    color: white; 
+    text-decoration: none;
+}
+
+.informacion a:hover {
+    text-decoration: underline;
+}
+
+/* ESTILOS PARA FORMULARIOS EMERGENTES */
+.login-form {
+    display: none; /* Ocultamos por defecto */
+    position: fixed; /* Posición fija para que se mantenga en la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+}
+
+.form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+#close-login-form, #close-register-form {
+    float: right;
+    cursor: pointer;
+}
+
+button {
+    background-color: #f87887;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #f3d597;
+}
+
+.section{
+    margin-top: 5rem;
+}
+li{
+    margin-top: 2rem;
+}

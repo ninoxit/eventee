@@ -11,9 +11,11 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as IndexImport } from './routes/index'
 import { Route as SignupIndexImport } from './routes/signup/index'
 import { Route as SignoutIndexImport } from './routes/signout/index'
 import { Route as PIndexImport } from './routes/p/index'
+import { Route as NosotrosIndexImport } from './routes/nosotros/index'
 import { Route as LoginIndexImport } from './routes/login/index'
 import { Route as DebugIndexImport } from './routes/debug/index'
 import { Route as PConfigImport } from './routes/p/config'
@@ -23,6 +25,11 @@ import { Route as LoginForgotImport } from './routes/login/forgot'
 import { Route as ErrorCodnameImport } from './routes/error/$codname'
 
 // Create/Update Routes
+
+const IndexRoute = IndexImport.update({
+  path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const SignupIndexRoute = SignupIndexImport.update({
   path: '/signup/',
@@ -36,6 +43,11 @@ const SignoutIndexRoute = SignoutIndexImport.update({
 
 const PIndexRoute = PIndexImport.update({
   path: '/p/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const NosotrosIndexRoute = NosotrosIndexImport.update({
+  path: '/nosotros/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -78,6 +90,10 @@ const ErrorCodnameRoute = ErrorCodnameImport.update({
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/': {
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
     '/error/$codname': {
       preLoaderRoute: typeof ErrorCodnameImport
       parentRoute: typeof rootRoute
@@ -106,6 +122,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginIndexImport
       parentRoute: typeof rootRoute
     }
+    '/nosotros/': {
+      preLoaderRoute: typeof NosotrosIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/p/': {
       preLoaderRoute: typeof PIndexImport
       parentRoute: typeof rootRoute
@@ -124,6 +144,7 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren([
+  IndexRoute,
   ErrorCodnameRoute,
   LoginForgotRoute,
   PIdRoute,
@@ -131,6 +152,7 @@ export const routeTree = rootRoute.addChildren([
   PConfigRoute,
   DebugIndexRoute,
   LoginIndexRoute,
+  NosotrosIndexRoute,
   PIndexRoute,
   SignoutIndexRoute,
   SignupIndexRoute,
