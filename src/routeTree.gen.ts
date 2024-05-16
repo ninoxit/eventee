@@ -22,6 +22,7 @@ import { Route as DebugIndexImport } from './routes/debug/index'
 import { Route as PConfigImport } from './routes/p/config'
 import { Route as PUserImport } from './routes/p/$user'
 import { Route as PIdImport } from './routes/p/$id'
+import { Route as LoginVerifyImport } from './routes/login/verify'
 import { Route as LoginForgotImport } from './routes/login/forgot'
 import { Route as EventosFiestaImport } from './routes/eventos/fiesta'
 import { Route as ErrorCodnameImport } from './routes/error/$codname'
@@ -83,6 +84,11 @@ const PIdRoute = PIdImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const LoginVerifyRoute = LoginVerifyImport.update({
+  path: '/login/verify',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const LoginForgotRoute = LoginForgotImport.update({
   path: '/login/forgot',
   getParentRoute: () => rootRoute,
@@ -116,6 +122,10 @@ declare module '@tanstack/react-router' {
     }
     '/login/forgot': {
       preLoaderRoute: typeof LoginForgotImport
+      parentRoute: typeof rootRoute
+    }
+    '/login/verify': {
+      preLoaderRoute: typeof LoginVerifyImport
       parentRoute: typeof rootRoute
     }
     '/p/$id': {
@@ -168,6 +178,7 @@ export const routeTree = rootRoute.addChildren([
   ErrorCodnameRoute,
   EventosFiestaRoute,
   LoginForgotRoute,
+  LoginVerifyRoute,
   PIdRoute,
   PUserRoute,
   PConfigRoute,
