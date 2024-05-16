@@ -17,11 +17,13 @@ import { Route as SignoutIndexImport } from './routes/signout/index'
 import { Route as PIndexImport } from './routes/p/index'
 import { Route as NosotrosIndexImport } from './routes/nosotros/index'
 import { Route as LoginIndexImport } from './routes/login/index'
+import { Route as EventosIndexImport } from './routes/eventos/index'
 import { Route as DebugIndexImport } from './routes/debug/index'
 import { Route as PConfigImport } from './routes/p/config'
 import { Route as PUserImport } from './routes/p/$user'
 import { Route as PIdImport } from './routes/p/$id'
 import { Route as LoginForgotImport } from './routes/login/forgot'
+import { Route as EventosFiestaImport } from './routes/eventos/fiesta'
 import { Route as ErrorCodnameImport } from './routes/error/$codname'
 
 // Create/Update Routes
@@ -56,6 +58,11 @@ const LoginIndexRoute = LoginIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const EventosIndexRoute = EventosIndexImport.update({
+  path: '/eventos/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const DebugIndexRoute = DebugIndexImport.update({
   path: '/debug/',
   getParentRoute: () => rootRoute,
@@ -81,6 +88,11 @@ const LoginForgotRoute = LoginForgotImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const EventosFiestaRoute = EventosFiestaImport.update({
+  path: '/eventos/fiesta',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const ErrorCodnameRoute = ErrorCodnameImport.update({
   path: '/error/$codname',
   getParentRoute: () => rootRoute,
@@ -96,6 +108,10 @@ declare module '@tanstack/react-router' {
     }
     '/error/$codname': {
       preLoaderRoute: typeof ErrorCodnameImport
+      parentRoute: typeof rootRoute
+    }
+    '/eventos/fiesta': {
+      preLoaderRoute: typeof EventosFiestaImport
       parentRoute: typeof rootRoute
     }
     '/login/forgot': {
@@ -116,6 +132,10 @@ declare module '@tanstack/react-router' {
     }
     '/debug/': {
       preLoaderRoute: typeof DebugIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/eventos/': {
+      preLoaderRoute: typeof EventosIndexImport
       parentRoute: typeof rootRoute
     }
     '/login/': {
@@ -146,11 +166,13 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
   ErrorCodnameRoute,
+  EventosFiestaRoute,
   LoginForgotRoute,
   PIdRoute,
   PUserRoute,
   PConfigRoute,
   DebugIndexRoute,
+  EventosIndexRoute,
   LoginIndexRoute,
   NosotrosIndexRoute,
   PIndexRoute,
