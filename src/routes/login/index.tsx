@@ -1,16 +1,18 @@
 import { createFileRoute, redirect } from '@tanstack/react-router';
 import LoginLayout from '../../components/login/LoginLayout';
-import { useAuth } from '../../context/AuthProvider';
-import AuthComponent from '../../components/auth/AuthComponent';
 
 export const Route = createFileRoute('/login/')({
-  component: () => {
-    const { auth } = useAuth(); 
-    if (auth) {
-      console.log("Hello I'm falling here");
-      return <AuthComponent origin="login" />
-    }else{
-      return <LoginLayout />;
+  /* 
+  Revisamos si el usuario tiene una sesión activa y si se cumple la premisa
+  redireccionamos a su perfil.
+  */
+  beforeLoad:({context}) => {
+    if(context.auth){
+      throw redirect({
+        to: '/user',
+      })
     }
-  }
+  },
+  component: LoginLayout
 });
+

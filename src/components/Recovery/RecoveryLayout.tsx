@@ -1,4 +1,4 @@
-import Navbar from "../Navbar"
+import Navbar from "../navbar/Navbar"
 import RecoveryForm from "./RecoveryForm"
 
 export default function RecoveryLayout(){

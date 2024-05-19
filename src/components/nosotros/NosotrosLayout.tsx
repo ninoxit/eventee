@@ -1,4 +1,4 @@
-import Navbar from "../Navbar"
+import Navbar from "../navbar/Navbar"
 import FooterContainer from "../home/FootContainer"
 import MisionContainer from "./MisionContainer"
 import VisionContainer from "./VisionContainer"

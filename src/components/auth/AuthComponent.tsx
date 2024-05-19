@@ -1,10 +1,9 @@
-import { redirect } from "@tanstack/react-router";
-export default function AuthComponent(props){
-    var origin = props.origin;
+
+export default function AuthComponent(){
     return(
         <>
             <div className="container">
-                <a href="/user">
+                <a href="/user  ">
                     <button className="btn btn-primary">
                         Redireccionar a tu perfil
                     </button>
