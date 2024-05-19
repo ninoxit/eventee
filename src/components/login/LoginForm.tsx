@@ -1,42 +1,94 @@
-export default function LoginForm () {
-    return(
-        <>
-        <div className="container">
-            <form style={{width: "300px"}}>
+import React, { useState } from 'react';
+import { useAuth } from '../../context/AuthProvider'; 
+
+
+export default function LoginForm() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState({});
+    const { login } = useAuth(); 
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const newErrors = {};
+
+        if (!email) {
+            newErrors.email = 'Oops, email requerido';
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            newErrors.email = 'El email no es válido';
+        }
+
+        if (!password) {
+            newErrors.password = 'Oops, contraseña requerida';
+        } else if (password.length < 6) {
+            newErrors.password = 'La contraseña debe tener al menos 6 caracteres';
+        }
+
+        setErrors(newErrors);
+
+        if (Object.keys(newErrors).length === 0) {
+            try {
+                await login(email, password);
+                console.log('Usuario autenticado correctamente');
+            } catch (error) {
+                console.error('Error al iniciar sesión:', error.message);
+            }
+        }
+    };
+
+    return (
+        <div className="container-fluid pt-4 bg-dark" style={{height: "100vh"}}>
+            <form style={{ width: "400px" }} onSubmit={handleSubmit} className='bg-light rounded-top p-4'>
                 <div className="form-group">
                     <h3>
                         Iniciar sesión
                     </h3>
                 </div>
                 <div className="form-group">
-                    <input type="email" name = "Email" placeholder="*email" className="form-control" />
+                    <hr />
                 </div>
                 <div className="form-group">
-                <input type="password" name = "Password" placeholder="*contraseña" className="form-control mt-4" />
+                    <input
+                        type="email"
+                        name="Email"
+                        placeholder="*email"
+                        className="form-control"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    {errors.email && <div className="text-danger">{errors.email}</div>}
+                </div>
+                <div className="form-group">
+                    <input
+                        type="password"
+                        name="Password"
+                        placeholder="*contraseña"
+                        className="form-control mt-4"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    {errors.password && <div className="text-danger">{errors.password}</div>}
                 </div>
                 <div className="form-group">
                     <div className="row">
                         <div className="col-sm-6">
-                            <label >
-                            <input type="checkbox" name="keepSession" id="" /> Recordar sesion
+                            <label>
+                                <input type="checkbox" name="keepSession" /> Recordar sesión
                             </label>
                         </div>
                         <div className="col">
                             <a href="enlace">
-                                ¿olvidó la contraseña?
+                                ¿Olvidó la contraseña?
                             </a>
                         </div>
                     </div>
                 </div>
                 <div className="form-group mt-4">
-                    <button className="btn btn-primary" >
-                        Entrar 
+                    <button className="btn btn-primary">
+                        Entrar ahora
                     </button>
                 </div>
             </form>
         </div>
-
-        </>
-
-    )
+    );
 }

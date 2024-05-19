@@ -12,16 +12,13 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as UserIndexImport } from './routes/user/index'
 import { Route as SignupIndexImport } from './routes/signup/index'
 import { Route as SignoutIndexImport } from './routes/signout/index'
-import { Route as PIndexImport } from './routes/p/index'
 import { Route as NosotrosIndexImport } from './routes/nosotros/index'
 import { Route as LoginIndexImport } from './routes/login/index'
 import { Route as EventosIndexImport } from './routes/eventos/index'
 import { Route as DebugIndexImport } from './routes/debug/index'
-import { Route as PConfigImport } from './routes/p/config'
-import { Route as PUserImport } from './routes/p/$user'
-import { Route as PIdImport } from './routes/p/$id'
 import { Route as LoginVerifyImport } from './routes/login/verify'
 import { Route as LoginForgotImport } from './routes/login/forgot'
 import { Route as EventosFiestaImport } from './routes/eventos/fiesta'
@@ -34,6 +31,11 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const UserIndexRoute = UserIndexImport.update({
+  path: '/user/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const SignupIndexRoute = SignupIndexImport.update({
   path: '/signup/',
   getParentRoute: () => rootRoute,
@@ -41,11 +43,6 @@ const SignupIndexRoute = SignupIndexImport.update({
 
 const SignoutIndexRoute = SignoutIndexImport.update({
   path: '/signout/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const PIndexRoute = PIndexImport.update({
-  path: '/p/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -66,21 +63,6 @@ const EventosIndexRoute = EventosIndexImport.update({
 
 const DebugIndexRoute = DebugIndexImport.update({
   path: '/debug/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const PConfigRoute = PConfigImport.update({
-  path: '/p/config',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const PUserRoute = PUserImport.update({
-  path: '/p/$user',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const PIdRoute = PIdImport.update({
-  path: '/p/$id',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -128,18 +110,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginVerifyImport
       parentRoute: typeof rootRoute
     }
-    '/p/$id': {
-      preLoaderRoute: typeof PIdImport
-      parentRoute: typeof rootRoute
-    }
-    '/p/$user': {
-      preLoaderRoute: typeof PUserImport
-      parentRoute: typeof rootRoute
-    }
-    '/p/config': {
-      preLoaderRoute: typeof PConfigImport
-      parentRoute: typeof rootRoute
-    }
     '/debug/': {
       preLoaderRoute: typeof DebugIndexImport
       parentRoute: typeof rootRoute
@@ -156,16 +126,16 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NosotrosIndexImport
       parentRoute: typeof rootRoute
     }
-    '/p/': {
-      preLoaderRoute: typeof PIndexImport
-      parentRoute: typeof rootRoute
-    }
     '/signout/': {
       preLoaderRoute: typeof SignoutIndexImport
       parentRoute: typeof rootRoute
     }
     '/signup/': {
       preLoaderRoute: typeof SignupIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/user/': {
+      preLoaderRoute: typeof UserIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -179,16 +149,13 @@ export const routeTree = rootRoute.addChildren([
   EventosFiestaRoute,
   LoginForgotRoute,
   LoginVerifyRoute,
-  PIdRoute,
-  PUserRoute,
-  PConfigRoute,
   DebugIndexRoute,
   EventosIndexRoute,
   LoginIndexRoute,
   NosotrosIndexRoute,
-  PIndexRoute,
   SignoutIndexRoute,
   SignupIndexRoute,
+  UserIndexRoute,
 ])
 
 /* prettier-ignore-end */
