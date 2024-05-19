@@ -10,7 +10,7 @@ export default function GetNavbarInformation(email: string) {
         const fetchData = async () => {
             try {
                 const isProfileComplete = await IsUserProfileComplete(email);
-                if (isProfileComplete) {
+                if (isProfileComplete && email != null) {
                     const fetchedNickname = await GetNickname(email);
                     setNickname(fetchedNickname);
                 }
@@ -24,8 +24,8 @@ export default function GetNavbarInformation(email: string) {
     }, [email]);
 
     if (isLoading) {
-        return <p>Loading...</p>;
+        return <i className="bi bi-arrow-clockwise"></i>;
     }
-    console.log("Nickname getnavbar: " + nickname);
+    // console.log("Nickname getnavbar: " + nickname);
     return nickname ? nickname : "Perfil";
 }

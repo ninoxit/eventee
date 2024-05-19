@@ -1,33 +1,49 @@
-import { useEffect, useState } from "react";
+import BetaSection from "../beta/BetaSection";
+import BasicLayout from "../layout/BasicLayout";
 import Navbar from "../navbar/Navbar";
-import CompleteProfileForm from "./CompleteProfileForm";
-import IsUserProfileComplete from "./IsUserProfileComplete";
+import UserInformationSection from "./dashboard/UserInformationSection";
+import UserPictureSection from "./dashboard/UserPictureSection";
+import useUserInformation from "./dashboard/useUserInformation";
 
 function UserLayout(props) {
-    const [isProfileComplete, setIsProfileComplete] = useState(null); // Estado para manejar el resultado
-    const user_email = props.auth.user.email;
-    useEffect(() => {
-        const checkProfileComplete = async () => {
-            const result = await IsUserProfileComplete(user_email);
-            setIsProfileComplete(result);
-        };
-        checkProfileComplete();
-    }, [user_email]);
+    const user_email = props.auth.user.email || "";
+    const { userData, loading, error } = useUserInformation(user_email);
 
-    const renderHelper = (email) => {
-        if (isProfileComplete === null) {
-            return <p>Loading...</p>;
-        }
-        if (!isProfileComplete) {
-            return <CompleteProfileForm email={email} />;
-        } else {
-            return <h1>Perfil completo, mostrando información</h1>;
-        }
-    };
+    if (loading) {
+        return (
+            <>
+                <Navbar email={user_email} />
+                <BasicLayout>
+                    <p>Loading...</p>
+                </BasicLayout>
+            </>
+        );
+    }
+
+    if (error) {
+        return (
+            <>
+                <Navbar email={user_email} />
+                <BasicLayout>
+                    <p>Error: {error}</p>
+                </BasicLayout>
+            </>
+        );
+    }
 
     return (
         <>
-            <Navbar email={user_email}/>
+            <Navbar email={user_email} />
+            <BasicLayout>
+                <h6>Bienvenida, <strong>{userData.name.split(" ")[0]}</strong>.</h6>
+                <div className="row shadow">
+                    <UserInformationSection email={user_email} userdata={userData} />
+                    <UserPictureSection></UserPictureSection>
+                </div>
+                <div className="row">
+                    <BetaSection></BetaSection>
+                </div>
+            </BasicLayout>
         </>
     );
 }

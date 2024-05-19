@@ -1,7 +1,10 @@
+import handleSignOut from "../auth/handleSignout";
 import GetNavbarInformation from "./GetNavbarInformation";
+
 
 export default function Navbar(props){
     var info = GetNavbarInformation(props.email);
+    const signOutUser = handleSignOut();
     return (
         <>
         <nav className="navbar navbar-expand-lg bg-light fixed-top">
@@ -34,7 +37,7 @@ export default function Navbar(props){
                       <li><a className="dropdown-item" href="#"><i className="bi bi-person-circle"></i> Mi perfil</a></li>
                       <li><a className="dropdown-item" href="#"><i className="bi bi-gear"></i> Configuraciones</a></li>
                       <li><hr className="dropdown-divider" /></li>
-                      <li><a className="dropdown-item" href="#">
+                      <li><a className="dropdown-item" href="#" onClick={signOutUser}>
                         <i className="bi bi-box-arrow-right text-danger"></i> Cerrar sesión</a>
                       </li>
                     </ul>

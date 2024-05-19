@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthProvider'; 
-
+import { redirect } from '@tanstack/react-router';
 
 export default function LoginForm() {
     const [email, setEmail] = useState('');
@@ -29,7 +29,9 @@ export default function LoginForm() {
         if (Object.keys(newErrors).length === 0) {
             try {
                 await login(email, password);
-                console.log('Usuario autenticado correctamente');
+                throw redirect({
+                    to: '/user'
+                })
             } catch (error) {
                 console.error('Error al iniciar sesión:', error.message);
             }

@@ -7,7 +7,7 @@ export const Route = createFileRoute('/login/')({
   redireccionamos a su perfil.
   */
   beforeLoad:({context}) => {
-    if(context.auth){
+    if(context.auth.auth){
       throw redirect({
         to: '/user',
       })

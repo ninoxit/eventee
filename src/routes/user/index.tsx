@@ -7,9 +7,7 @@ let _auth: any;
 export const Route = createFileRoute('/user/')({
     beforeLoad: ({ context }) => {
         _auth = context.auth;
-        console.log(_auth);
-
-        if(!context.auth){
+        if(!_auth.auth){
             throw redirect({
                 to: '/login'
             })
