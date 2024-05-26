@@ -17,14 +17,20 @@ export default function useUserInformation(email) {
                 const { data, error } = await supabase
                     .from('usuario')
                     .select('id, name, lastname, telephone, email, username, bio')
-                    .eq('email', email)
-                    .single();
+                    .eq('email', email);
 
                 if (error) throw error;
-                setUserData(data);
+                
+                if (data.length === 1) {
+                    setUserData(data[0]);
+                } else {
+                    setError('No se encontró el usuario o se encontró más de uno con el mismo email.');
+                    setUserData(null);
+                }
             } catch (error) {
                 setError(error.message);
                 console.error('Error fetching user data:', error.message);
+                setUserData(null);
             } finally {
                 setLoading(false);
             }
@@ -32,5 +38,6 @@ export default function useUserInformation(email) {
 
         fetchUserData();
     }, [email]);
+
     return { userData, loading, error };
 }

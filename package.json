@@ -11,13 +11,15 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.43.2",
-    "@tanstack/react-router": "^1.31.1",
+    "@tanstack/react-router": "1.19.4",
+    "@tanstack/react-router-server": "^1.19.4",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
-    "react-icons-kit": "^2.0.0"
+    "react-icons-kit": "^2.0.0",
+    "react-toastify": "^10.0.5"
   },
   "devDependencies": {
     "@tanstack/router-vite-plugin": "^1.30.0",

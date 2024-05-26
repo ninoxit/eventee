@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { supabase } from "../../../supabase/supabase";
 
 export default function UserInformationForm(props) {
-    
     const [userData, setUserData] = useState({
         name: '',
         lastname: '',
@@ -15,8 +14,17 @@ export default function UserInformationForm(props) {
     useEffect(() => {
         if (props.userdata) {
             setUserData(props.userdata);
+        } else {
+            setUserData({
+                name: '',
+                lastname: '',
+                telephone: '',
+                email: props.email || '',
+                username: '',
+                bio: ''
+            });
         }
-    }, [props.userdata]);
+    }, [props.userdata, props.email]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -29,23 +37,20 @@ export default function UserInformationForm(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            if (props.email) {
-                const { error } = await supabase
-                    .from('usuario')
-                    .update({
-                        name: userData.name,
-                        lastname: userData.lastname,
-                        telephone: userData.telephone,
-                        email: userData.email,
-                        username: userData.username,
-                        bio: userData.bio
-                    })
-                    .eq('email', props.email);
+            const { error } = await supabase
+                .from('usuario')
+                .upsert({
+                    name: userData.name,
+                    lastname: userData.lastname,
+                    telephone: userData.telephone,
+                    email: userData.email,
+                    username: userData.username,
+                    bio: userData.bio
+                }, { onConflict: ['email'] });
 
-                if (error) throw error;
+            if (error) throw error;
 
-                alert('Datos guardados exitosamente');
-            }
+            alert('Datos guardados exitosamente');
         } catch (error) {
             console.error('Error updating user data:', error.message);
         }
@@ -97,7 +102,7 @@ export default function UserInformationForm(props) {
                         <input 
                             type="email" 
                             className="form-control" 
-                            placeholder="email" 
+                            placeholder="Email" 
                             name="email" 
                             value={userData.email} 
                             onChange={handleChange} 
@@ -125,7 +130,7 @@ export default function UserInformationForm(props) {
             <div className="row mb-2">
                 <div className="form-group">
                     <textarea 
-                        placeholder="bio" 
+                        placeholder="Bio" 
                         className="form-control" 
                         style={{ minHeight: "100px", resize: "none" }} 
                         name="bio" 

@@ -6,13 +6,10 @@ export default async function IsUserProfileComplete(email: string) {
             .from('usuario')
             .select('*')
             .eq('email', email); 
-
         if (error) {
             throw error;
         }
-
         if (usuario && usuario.length > 0) {
-            // console.log("Perfil del usuario:", usuario[0]);
             return true; 
         } else {
             console.log("No se encontró el usuario con el email proporcionado.");

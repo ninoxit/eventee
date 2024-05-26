@@ -1,9 +1,11 @@
 import LoginForm from "./LoginForm"
+import Title from "../document/Title"
 import "../../styles/Login.less"
 
 export default function LoginLayout(){
     return (
         <>
+            <Title title="Inicia sesión"></Title>
             <div className="login-layout-container">
                 <div className="login-left-side">
                     <LoginForm></LoginForm>
