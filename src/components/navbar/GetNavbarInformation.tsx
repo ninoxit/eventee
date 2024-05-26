@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import IsUserProfileComplete from "../user/IsUserProfileComplete";
-import { GetNickname } from "./GetNickname";
+import { GetData } from "./GetData";
+
 
 export default function GetNavbarInformation(email: string) {
-    const [nickname, setNickname] = useState<string | null>(null);
+    const [userData, setUserData] = useState<{ name: string | null, username: string | null }>({ name: null, username: null });
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -11,8 +12,10 @@ export default function GetNavbarInformation(email: string) {
             try {
                 const isProfileComplete = await IsUserProfileComplete(email);
                 if (isProfileComplete && email != null) {
-                    const fetchedNickname = await GetNickname(email);
-                    setNickname(fetchedNickname);
+                    const fetchedUserData = await GetData(email);
+                    if (fetchedUserData) {
+                        setUserData(fetchedUserData);
+                    }
                 }
             } catch (error) {
                 console.error("Error al obtener la información del perfil:", error);
@@ -26,6 +29,6 @@ export default function GetNavbarInformation(email: string) {
     if (isLoading) {
         return <i className="bi bi-arrow-clockwise"></i>;
     }
-    // console.log("Nickname getnavbar: " + nickname);
-    return nickname ? nickname : "Perfil";
+
+    return userData.username ? userData.username : "Perfil";
 }

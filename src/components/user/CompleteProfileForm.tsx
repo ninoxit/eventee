@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import ValidateField from "./ValidateField";
 import IsNicknameTaken from "./IsNicknameTaken";
 import RegisterUserData from "./RegisterUserData";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CompleteProfileForm(props) {
     const userEmail = props.email;

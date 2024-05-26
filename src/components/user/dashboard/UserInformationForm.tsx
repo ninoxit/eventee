@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../../supabase/supabase";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function UserInformationForm(props) {
     const [userData, setUserData] = useState({
@@ -50,7 +52,7 @@ export default function UserInformationForm(props) {
 
             if (error) throw error;
 
-            alert('Datos guardados exitosamente');
+            // aqui
         } catch (error) {
             console.error('Error updating user data:', error.message);
         }

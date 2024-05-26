@@ -1,8 +1,14 @@
 import handleSignOut from "../auth/handleSignout";
+import ProfilePicture from "../pictures/ProfilePicture";
+import { GetData } from "./GetData";
 import GetNavbarInformation from "./GetNavbarInformation";
+import { useEffect, useState } from "react";
+
 
 export default function Navbar(props){
+    const [name, setName ] = useState();
     var info = GetNavbarInformation(props.email);
+    
     const signOutUser = handleSignOut();
     return (
         <>
@@ -26,9 +32,12 @@ export default function Navbar(props){
                 </ul>
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                   <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a className="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <div className="image-place" style={{ width: "30px", marginRight: "10px" }}>
+                          <ProfilePicture name={info} />
+                      </div>
                       {info}
-                    </a>
+                  </a>
                     <ul className="dropdown-menu dropdown-menu-end">
                       <li>
                         <a className="dropdown-item" href="#"><i className="bi bi-calendar2-event"></i> Mis eventos</a>
@@ -37,8 +46,10 @@ export default function Navbar(props){
                       <li><a className="dropdown-item" href="#"><i className="bi bi-tools"></i> Adminsitración</a></li>
                       <li><a className="dropdown-item" href="#"><i className="bi bi-gear"></i> Configuraciones</a></li>
                       <li><hr className="dropdown-divider" /></li>
-                      <li><a className="dropdown-item" href="#" onClick={signOutUser}>
-                        <i className="bi bi-box-arrow-right text-danger"></i> Cerrar sesión</a>
+                      <li>
+                        <a className="dropdown-item" href="#" onClick={signOutUser}>
+                          <i className="bi bi-box-arrow-right text-danger"></i> Cerrar sesión
+                        </a>
                       </li>
                     </ul>
                   </li>
@@ -68,8 +79,10 @@ export default function Navbar(props){
                         <li><a className="dropdown-item" href="#"><i className="bi bi-person-circle"></i> Mi perfil</a></li>
                         <li><a className="dropdown-item" href="#"><i className="bi bi-gear"></i> Configuraciones</a></li>
                         <li><hr className="dropdown-divider" /></li>
-                        <li><a className="dropdown-item" href="#">
-                          <i className="bi bi-box-arrow-right text-danger"></i> Cerrar sesión</a>
+                        <li>
+                          <a className="dropdown-item" href="#" onClick={signOutUser}>
+                            <i className="bi bi-box-arrow-right text-danger"></i> Cerrar sesión
+                          </a>
                         </li>
                     </ul>
                     </li>

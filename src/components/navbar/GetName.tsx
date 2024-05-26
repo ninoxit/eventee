@@ -1,10 +1,10 @@
 import { supabase } from "../../supabase/supabase";
 
-export async function GetNickname(email: string) {
+export async function GetName(email: string) {
     try {
         const { data: usuario, error } = await supabase
             .from('usuario')
-            .select('username')
+            .select('name')
             .eq('email', email)
             .single();
 
@@ -12,7 +12,7 @@ export async function GetNickname(email: string) {
             throw error;
         }
         if (usuario) {
-            return usuario.username;
+            return usuario.name;
         } else {
             return null;
         }

@@ -6,6 +6,7 @@ import Title from "../document/Title";
 import UserInformationSection from "./dashboard/UserInformationSection";
 import UserPictureSection from "./dashboard/UserPictureSection";
 import useUserInformation from "./dashboard/useUserInformation";
+import FooterContainer from "../home/FootContainer";
 
 export default function UserLayout(props) {
     const user_email = props.auth.user.email || "";
@@ -47,6 +48,7 @@ export default function UserLayout(props) {
                         </div>
                     )}
                 </BasicLayout>
+                <FooterContainer></FooterContainer>
             </div>
         </>
     );

@@ -1,10 +1,10 @@
 import { supabase } from "../../supabase/supabase";
 
-export async function GetNickname(email: string) {
+export async function GetData(email: string) {
     try {
         const { data: usuario, error } = await supabase
             .from('usuario')
-            .select('username')
+            .select('name, username')
             .eq('email', email)
             .single();
 
@@ -12,12 +12,12 @@ export async function GetNickname(email: string) {
             throw error;
         }
         if (usuario) {
-            return usuario.username;
+            return { name: usuario.name, username: usuario.username };
         } else {
             return null;
         }
     } catch (error) {
-        console.error("Error al obtener el nickname:", error.message);
+        console.error("Error al obtener el nombre y el username:", error.message);
         return null;
     }
 }

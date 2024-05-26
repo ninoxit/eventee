@@ -17,13 +17,15 @@ import { Route as SignupIndexImport } from './routes/signup/index'
 import { Route as SignoutIndexImport } from './routes/signout/index'
 import { Route as NosotrosIndexImport } from './routes/nosotros/index'
 import { Route as LoginIndexImport } from './routes/login/index'
+import { Route as FaqsIndexImport } from './routes/faqs/index'
 import { Route as EventosIndexImport } from './routes/eventos/index'
 import { Route as DebugIndexImport } from './routes/debug/index'
+import { Route as BlogIndexImport } from './routes/blog/index'
 import { Route as AdminIndexImport } from './routes/admin/index'
 import { Route as LoginVerifyImport } from './routes/login/verify'
 import { Route as LoginForgotImport } from './routes/login/forgot'
-import { Route as EventosFiestaImport } from './routes/eventos/fiesta'
 import { Route as ErrorCodnameImport } from './routes/error/$codname'
+import { Route as BlogIdImport } from './routes/blog/$id'
 
 // Create/Update Routes
 
@@ -57,6 +59,11 @@ const LoginIndexRoute = LoginIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const FaqsIndexRoute = FaqsIndexImport.update({
+  path: '/faqs/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const EventosIndexRoute = EventosIndexImport.update({
   path: '/eventos/',
   getParentRoute: () => rootRoute,
@@ -64,6 +71,11 @@ const EventosIndexRoute = EventosIndexImport.update({
 
 const DebugIndexRoute = DebugIndexImport.update({
   path: '/debug/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BlogIndexRoute = BlogIndexImport.update({
+  path: '/blog/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -82,13 +94,13 @@ const LoginForgotRoute = LoginForgotImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const EventosFiestaRoute = EventosFiestaImport.update({
-  path: '/eventos/fiesta',
+const ErrorCodnameRoute = ErrorCodnameImport.update({
+  path: '/error/$codname',
   getParentRoute: () => rootRoute,
 } as any)
 
-const ErrorCodnameRoute = ErrorCodnameImport.update({
-  path: '/error/$codname',
+const BlogIdRoute = BlogIdImport.update({
+  path: '/blog/$id',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -100,12 +112,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/error/$codname': {
-      preLoaderRoute: typeof ErrorCodnameImport
+    '/blog/$id': {
+      preLoaderRoute: typeof BlogIdImport
       parentRoute: typeof rootRoute
     }
-    '/eventos/fiesta': {
-      preLoaderRoute: typeof EventosFiestaImport
+    '/error/$codname': {
+      preLoaderRoute: typeof ErrorCodnameImport
       parentRoute: typeof rootRoute
     }
     '/login/forgot': {
@@ -120,12 +132,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexImport
       parentRoute: typeof rootRoute
     }
+    '/blog/': {
+      preLoaderRoute: typeof BlogIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/debug/': {
       preLoaderRoute: typeof DebugIndexImport
       parentRoute: typeof rootRoute
     }
     '/eventos/': {
       preLoaderRoute: typeof EventosIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/faqs/': {
+      preLoaderRoute: typeof FaqsIndexImport
       parentRoute: typeof rootRoute
     }
     '/login/': {
@@ -155,13 +175,15 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
+  BlogIdRoute,
   ErrorCodnameRoute,
-  EventosFiestaRoute,
   LoginForgotRoute,
   LoginVerifyRoute,
   AdminIndexRoute,
+  BlogIndexRoute,
   DebugIndexRoute,
   EventosIndexRoute,
+  FaqsIndexRoute,
   LoginIndexRoute,
   NosotrosIndexRoute,
   SignoutIndexRoute,
