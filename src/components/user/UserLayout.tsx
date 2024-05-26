@@ -12,7 +12,7 @@ function UserLayout(props) {
     if (loading) {
         return (
             <>
-                <Navbar email={user_email} />
+                <Navbar email={user_email} showProfilePart="true"/>
                 <BasicLayout>
                     <p>Loading...</p>
                 </BasicLayout>
@@ -33,17 +33,21 @@ function UserLayout(props) {
 
     return (
         <>
+            
             <Navbar email={user_email} />
+            <div style={{marginTop: "4rem", paddingTop: "1rem"}}>
             <BasicLayout>
                 <h6>Bienvenida, <strong>{userData.name.split(" ")[0]}</strong>.</h6>
                 <div className="row shadow">
-                    <UserInformationSection email={user_email} userdata={userData} />
                     <UserPictureSection></UserPictureSection>
+                    <UserInformationSection email={user_email} userdata={userData} />
                 </div>
                 <div className="row">
-                    <BetaSection></BetaSection>
+                    <BetaSection id={userData.id}></BetaSection>
                 </div>
             </BasicLayout>
+            </div>
+
         </>
     );
 }

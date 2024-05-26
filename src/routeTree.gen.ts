@@ -19,6 +19,7 @@ import { Route as NosotrosIndexImport } from './routes/nosotros/index'
 import { Route as LoginIndexImport } from './routes/login/index'
 import { Route as EventosIndexImport } from './routes/eventos/index'
 import { Route as DebugIndexImport } from './routes/debug/index'
+import { Route as AdminIndexImport } from './routes/admin/index'
 import { Route as LoginVerifyImport } from './routes/login/verify'
 import { Route as LoginForgotImport } from './routes/login/forgot'
 import { Route as EventosFiestaImport } from './routes/eventos/fiesta'
@@ -66,6 +67,11 @@ const DebugIndexRoute = DebugIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const AdminIndexRoute = AdminIndexImport.update({
+  path: '/admin/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const LoginVerifyRoute = LoginVerifyImport.update({
   path: '/login/verify',
   getParentRoute: () => rootRoute,
@@ -110,6 +116,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginVerifyImport
       parentRoute: typeof rootRoute
     }
+    '/admin/': {
+      preLoaderRoute: typeof AdminIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/debug/': {
       preLoaderRoute: typeof DebugIndexImport
       parentRoute: typeof rootRoute
@@ -149,6 +159,7 @@ export const routeTree = rootRoute.addChildren([
   EventosFiestaRoute,
   LoginForgotRoute,
   LoginVerifyRoute,
+  AdminIndexRoute,
   DebugIndexRoute,
   EventosIndexRoute,
   LoginIndexRoute,

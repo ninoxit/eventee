@@ -16,7 +16,7 @@ export default function useUserInformation(email) {
             try {
                 const { data, error } = await supabase
                     .from('usuario')
-                    .select('name, lastname, telephone, email, username, bio')
+                    .select('id, name, lastname, telephone, email, username, bio')
                     .eq('email', email)
                     .single();
 

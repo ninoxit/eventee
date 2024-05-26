@@ -1,7 +1,6 @@
 import handleSignOut from "../auth/handleSignout";
 import GetNavbarInformation from "./GetNavbarInformation";
 
-
 export default function Navbar(props){
     var info = GetNavbarInformation(props.email);
     const signOutUser = handleSignOut();
@@ -35,6 +34,7 @@ export default function Navbar(props){
                         <a className="dropdown-item" href="#"><i className="bi bi-calendar2-event"></i> Mis eventos</a>
                       </li>
                       <li><a className="dropdown-item" href="#"><i className="bi bi-person-circle"></i> Mi perfil</a></li>
+                      <li><a className="dropdown-item" href="#"><i className="bi bi-tools"></i> Adminsitración</a></li>
                       <li><a className="dropdown-item" href="#"><i className="bi bi-gear"></i> Configuraciones</a></li>
                       <li><hr className="dropdown-divider" /></li>
                       <li><a className="dropdown-item" href="#" onClick={signOutUser}>

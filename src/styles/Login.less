@@ -1,0 +1,56 @@
+.login-layout-container {
+    background-color: #272727;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.login-left-side {
+    width: 40vw;
+    height: 100vh;
+    background-color: #fff;
+}
+
+.left-form{
+    width: 80%;
+    margin: auto;
+}
+
+.login-right-side {
+    width: 60vw;
+    height: 100vh;
+    background-color: rgb(29, 29, 29);
+    display: block; 
+}
+.right-image-container{
+    width: 30%;
+    height: auto;
+    padding-top: 40px;
+    padding: 1rem;
+    margin: auto;
+}
+.right-side-text{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+// Mockup
+.right-side-mockup{
+    width: 100%;
+    height: auto;
+}
+@media (max-width: 768px) {
+    .login-layout-container {
+        flex-direction: column;
+    }
+
+    .login-left-side {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .login-right-side {
+        display: none; 
+    }
+}

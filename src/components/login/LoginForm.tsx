@@ -39,8 +39,8 @@ export default function LoginForm() {
     };
 
     return (
-        <div className="container-fluid pt-4 bg-dark" style={{height: "100vh"}}>
-            <form style={{ width: "400px" }} onSubmit={handleSubmit} className='bg-light rounded-top p-4'>
+        <div className="left-side">
+            <form onSubmit={handleSubmit} className='bg-light p-4 left-form'>
                 <div className="form-group">
                     <h3>
                         Iniciar sesión
@@ -71,7 +71,7 @@ export default function LoginForm() {
                     />
                     {errors.password && <div className="text-danger">{errors.password}</div>}
                 </div>
-                <div className="form-group">
+                <div className="form-group mt-4">
                     <div className="row">
                         <div className="col-sm-6">
                             <label>
