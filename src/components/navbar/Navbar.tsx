@@ -27,7 +27,7 @@ export default function Navbar(props){
 
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link nav-link-grow-up" href="#">Eventos</a>
+                    <a className="nav-link nav-link-grow-up" href="/eventos">Eventos</a>
                   </li>
                 </ul>
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -42,7 +42,7 @@ export default function Navbar(props){
                       <li>
                         <a className="dropdown-item" href="#"><i className="bi bi-calendar2-event"></i> Mis eventos</a>
                       </li>
-                      <li><a className="dropdown-item" href="#"><i className="bi bi-person-circle"></i> Mi perfil</a></li>
+                      <li><a className="dropdown-item" href="/user"><i className="bi bi-person-circle"></i> Mi perfil</a></li>
                       <li><a className="dropdown-item" href="#"><i className="bi bi-tools"></i> Adminsitración</a></li>
                       <li><a className="dropdown-item" href="#"><i className="bi bi-gear"></i> Configuraciones</a></li>
                       <li><hr className="dropdown-divider" /></li>
@@ -66,17 +66,17 @@ export default function Navbar(props){
                       <a className="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href="#">Eventos</a>
+                      <a className="nav-link" href="/eventos">Eventos</a>
                     </li>
                     <li className="nav-item dropdown">
-                      <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <a className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Perfil
                       </a>
                       <ul className="dropdown-menu dropdown-menu-end">
                       <li>
                         <a className="dropdown-item" href="#"><i className="bi bi-calendar2-event"></i> Mis eventos</a>
                         </li>
-                        <li><a className="dropdown-item" href="#"><i className="bi bi-person-circle"></i> Mi perfil</a></li>
+                        <li><a className="dropdown-item" href="/user"><i className="bi bi-person-circle"></i> Mi perfil</a></li>
                         <li><a className="dropdown-item" href="#"><i className="bi bi-gear"></i> Configuraciones</a></li>
                         <li><hr className="dropdown-divider" /></li>
                         <li>

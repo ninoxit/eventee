@@ -1,4 +1,7 @@
 export default function FooterContainer(){
+    var links = {
+        instagram: "https://www.instagram.com/eventeebase?igsh=MWJ2c3I3MG43dXd1Zg==",
+    }
     return(
         <>
             <footer className="text-center text-lg-start bg-body-tertiary text-muted">
@@ -15,7 +18,7 @@ export default function FooterContainer(){
                     <a href="#" className="me-4 text-reset">
                         <i className="fab fa-google"></i>
                     </a>
-                    <a href="#" className="me-4 text-reset">
+                    <a  href={`${links.instagram}`} className="me-4 text-reset">
                         <i className="fab fa-instagram"></i>
                     </a>
                     <a href="#" className="me-4 text-reset">

@@ -7,8 +7,11 @@ import SearchBar from "./search/SearchBar";
 import EventCard from "./cards/EventCard";
 import Pagination from "./pagination/Pagination";
 import MapComponent from '../map/MapComponent';
+import ButtonPanel from './controls/ButtonPanel';
 
-export default function EventosLayoutAuth(){
+export default function EventosLayoutAuth(props){
+  
+  const user = props.auth.user;
   const [eventos, setEventos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -56,14 +59,16 @@ export default function EventosLayoutAuth(){
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
-
+  console.log("!!!!!!!")
+  console.log(user)
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar email={user.email}></Navbar>
       <div style={{marginTop: "63px"}}>
         <BasicLayout>
           <h1>Eventos</h1>  
           <SearchBar searchTerm={searchTerm} handleSearch={handleSearch} />
+          <ButtonPanel></ButtonPanel>
           <div style={{display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1rem"}}>
             {currentEvents.map((evento) => (
               <EventCard evento={evento} key={evento.id} />
