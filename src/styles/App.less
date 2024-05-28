@@ -2,6 +2,7 @@
 @import url('./ColorScheme.less');
 @import url('./Navbar.less');
 @import url('./Beta.less');
+@import url('./AreaAnimation.less');
 
 // Importar fonts
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
@@ -130,6 +131,9 @@ body {
 .navbar {
     background-color: #E78D8B;
     border-color: #E78D8B;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 2px;
 }
 .navbar-dark .navbar-nav .nav-link {
     color: #E78D8B;
@@ -187,4 +191,106 @@ body {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+  }
+
+  .event-panel {
+    width: 85%;
+    margin: auto;
+    padding: 2rem;
+  }
+  
+  .search-panel {
+    background-image: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    min-height: 300px;
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2rem;
+  }
+  
+  .search-panel-title {
+    color: white;
+    margin-bottom: 1rem;
+    font-weight: bolder;
+  }
+  
+  .search-bar-container {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
+  
+  .search-filter-container {
+    width: 80%;
+    margin: auto;
+    margin-top: auto;
+  }
+  .circular-div {
+    width: 60px;
+    height: 60px; 
+    border-radius: 50%; 
+    margin: auto;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    cursor: pointer;
+  }
+  .circular-div i{
+    font-weight: bolder;
+    font-size: 30px;
+  }
+  .circular-div-title{
+    color: white;
+    font-weight: bolder;
+  }
+  .btn-panel{
+    width: 30%;
+  }
+  
+  // Hovers
+  .eventos-personal{
+    color: #EF476F;
+    &:hover{
+        background-color: #EF476F;
+        color: white;
+    }
+  }
+  .eventos-todos{
+    color: #F78C6B;
+    &:hover{
+        background-color: #F78C6B;
+        color: white;
+    }
+  }
+  .eventos-fiestas{
+    color: #FFD166;
+    &:hover{
+        background-color: #FFD166;
+        color: white;
+    }
+  }
+  .eventos-compromisos{
+    color: #06D6A0;
+    &:hover{
+        background-color: #06D6A0;
+        color: white;
+    }
+  }
+  .eventos-reuniones{
+    color: #118AB2;
+    &:hover{
+        background-color: #118AB2;
+        color: white;
+    }
+  }
+  .eventos-mas{
+    color: #073B4C;
+    &:hover{
+        background-color: #073B4C;
+        color: white;
+    }
   }

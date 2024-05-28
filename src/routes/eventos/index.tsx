@@ -15,9 +15,10 @@ export const Route = createFileRoute('/eventos/')({
   },
   component: () => {
     if (_component == "auth") {
-      return <EventosLayoutAuth auth={_context} />;
+      console.log(_context)
+      return <EventosLayoutAuth props={_context} />;
     } else {
-      return <EventosLayout />;
+      return <EventosLayout props={_context} />;
     }
   }
 });

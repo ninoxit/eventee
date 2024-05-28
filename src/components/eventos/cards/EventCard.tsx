@@ -21,7 +21,7 @@ const EventCard = ({ evento }) => {
           </p>
           <hr />
           <p className="card-text">
-            <i className="bi bi-person"></i>
+            <strong>@</strong>
             {evento.usuario ? (
               <span>{evento.usuario.username}</span>
             ) : (

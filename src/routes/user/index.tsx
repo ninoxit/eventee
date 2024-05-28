@@ -13,5 +13,5 @@ export const Route = createFileRoute('/user/')({
             })
         }
     },
-    component: (props) => <UserLayout {...props} auth={_auth} />
+    component: (props) => <UserLayout {...props} props={_auth} />
 })

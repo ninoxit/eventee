@@ -1,10 +1,11 @@
 import Navbar from "../navbar/Navbar"
 import FooterContainer from "../home/FootContainer"
-export default function EventosLayout(){
-
+export default function EventosLayout(props){
+    console.log("aaaaaaaaaaaaaa")
+    console.log(props)
     return(
         <>
-            <Navbar></Navbar>
+            <Navbar props={props}></Navbar>
             <FooterContainer></FooterContainer>
         </>
     )

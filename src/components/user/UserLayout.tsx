@@ -9,7 +9,8 @@ import useUserInformation from "./dashboard/useUserInformation";
 import FooterContainer from "../home/FootContainer";
 
 export default function UserLayout(props) {
-    const user_email = props.auth.user.email || "";
+    
+    var user_email = props.props.user.email || null;
     const { userData, loading, error } = useUserInformation(user_email);
     let message = "";
 
@@ -17,7 +18,7 @@ export default function UserLayout(props) {
         return (
             <>
                 <Title title="Perfil" />
-                <Navbar email={user_email} showProfilePart="true" />
+                <Navbar props={props} showProfilePart="true" />
                 <BasicLayout>
                     <p>Loading...</p>
                 </BasicLayout>
@@ -30,11 +31,12 @@ export default function UserLayout(props) {
     } else {
         message = userData.name.split(" ")[0];
     }
-
+    
     return (
         <>
+            <Navbar props={props}></Navbar>
             <Title title="Perfil" />
-            <Navbar email={user_email} />
+            
             <div style={{ marginTop: "4rem", paddingTop: "1rem" }}>
                 <BasicLayout>
                     <h6>Bienvenida, <strong>{message}</strong>.</h6>

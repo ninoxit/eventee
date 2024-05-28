@@ -12,7 +12,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.43.2",
     "@tanstack/react-router": "1.19.4",
-    "@tanstack/react-router-server": "^1.19.4",
+    "@tanstack/react-router-server": "1.19.4",
     "@uiw/react-md-editor": "^4.0.4",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
